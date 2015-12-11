@@ -21,14 +21,6 @@ class Ball {
     vel.limit(30);
   }
 
-  Ball(float tX, float tY) {
-    diam = 75;
-    loc = new PVector(random(diam, width-diam), random(diam, height-diam));
-    vel = PVector.random2D();
-    c = color(random(255), random(50), random(100, 255));
-    vel.mult(.8);
-    vel.limit(.3);
-  }
 
   //after declaring fields and setting up constructors, you can define your methods
   void display() {

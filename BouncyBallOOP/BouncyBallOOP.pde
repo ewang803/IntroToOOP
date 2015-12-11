@@ -4,7 +4,7 @@ void setup() {
   size(800, 600);
   //initialize b as a new object of the Ball class
   for (int i = 0; i < allTheBalls.length; i++) {
-    allTheBalls[i] = new Ball();
+    allTheBalls[i] = new Ball(random(50,300));
   }
 }
 
