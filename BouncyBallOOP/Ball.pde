@@ -12,6 +12,24 @@ class Ball {
     c = color(random(255), random(50), random(100, 255));
   }
 
+  Ball(int tDiam) {
+    diam = tDiam;
+    loc = new PVector(random(diam, width-diam), random(diam, height-diam));
+    vel = PVector.random2D();
+    c = color(random(255), random(50), random(100, 255));
+    vel.mult(4);
+    vel.limit(30);
+  }
+
+  Ball(float tX, float tY) {
+    diam = 75;
+    loc = new PVector(random(diam, width-diam), random(diam, height-diam));
+    vel = PVector.random2D();
+    c = color(random(255), random(50), random(100, 255));
+    vel.mult(.8);
+    vel.limit(.3);
+  }
+
   //after declaring fields and setting up constructors, you can define your methods
   void display() {
     fill(c);
@@ -21,6 +39,8 @@ class Ball {
 
   void shimmy() {
     loc.add(vel);
+    vel.mult(1.5);
+    vel.limit(15);
   }
 
   void explode() {
@@ -31,14 +51,16 @@ class Ball {
 
   void bounce() {
     if (loc.x + diam/2 >= width) {
-   vel.x = -abs(vel.x);
-    }if(loc.x - diam/2 <= 0) {
-   vel.x = abs(vel.x);
+      vel.x = -abs(vel.x);
     }
-    if (loc.y + diam/2 >= height){
-   vel.y = -abs(vel.y);
-    }if( loc.y - diam/2 <= 0) {
-   vel.y = abs(vel.y);
+    if (loc.x - diam/2 <= 0) {
+      vel.x = abs(vel.x);
+    }
+    if (loc.y + diam/2 >= height) {
+      vel.y = -abs(vel.y);
+    }
+    if ( loc.y - diam/2 <= 0) {
+      vel.y = abs(vel.y);
     }
   }
 }
